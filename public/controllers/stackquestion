@@ -1,0 +1,33 @@
+I am using the square-connect library, and when creating an item, my price is being truncated. For instance, if I set my item price to be 123.13, what comes out is 1.23. 
+
+Here is an example of my code:
+    
+    squareRouter.post('/item', function(req, res){
+  	var item = req.body.item;
+  	console.log(item);
+  	square.api('/me/items', 'POST', item, function(err, resp){
+  		data_handler(err, resp, res);
+  	  });
+    });
+
+in the console window, here is my item object:
+
+    { variations: { 
+        pricing_type: 'FIXED_PRICING',
+        price_money: { currency_code: 'USD', amount: 123.13 },
+        name: 'Small' },
+    name: 'The Real test',
+    description: 'The price of this should be $123.13',
+    visibility: true,
+    available_online: true,
+    available_for_pickup: true }
+
+but in my dashboard, ![enter image description here][1]
+
+I am using the square-connect npm module available here:
+https://www.npmjs.com/package/square-connect
+
+I have the ugly feeling this is a bug in the npm module, not something I'm doing, but I've very very rarely found this to be true in practice. Am I missing something here, or do I need to find the violating code in the library and fix it?
+
+
+  [1]: http://i.stack.imgur.com/TCdRB.png

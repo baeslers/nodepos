@@ -1,0 +1,32 @@
+<div class="row">
+	<div class="hero text-center">
+			<h2> User Functions </h2>
+			<button class="btn btn-success" ng-click="pchange()">Change Password</button>
+			<button class="btn btn-success" ng-click="orderHistory()">Order History</button>
+	</div>
+</div>
+<div class="row">
+	<div class="hero text-center">
+			<h2> Rewards </h2>
+			<button class="btn btn-success" ng-click="redeemInit()">Redeem Reward</button>
+			<button class="btn btn-success" ng-click="fetchRewards()">Reward History</button>
+	</div>
+	<form ng-if="redeeminit">
+
+	</form>
+	<table ng-if="fetchrewards" ng-table>
+		<tr ng-repeat="reward in rewards">
+			<td data-title="'Social'">{{reward.social.date}}</td>
+			<td data-title="'In Store'">{{reward.store.date}}</td>
+		</tr>
+	</table>
+</div>
+<div class="row">
+	<div class="hero text-center">
+			<h2> Social Media </h2>
+			<button class="btn btn-success" ng-click="addAccount()">Add Account</button>
+			<button class="btn btn-success" ng-click="editAccount()">Edit Accounts</button>
+			<button class="btn btn-success" ng-click="privacy()">Privacy Policy</button>
+	</div>
+</div>
+<!-- modals -->

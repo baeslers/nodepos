@@ -1,0 +1,163 @@
+<!-- DOCTYPE html5 charset="utf-8" -->
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Baeslers </title>
+  <script src="lib/jquery/dist/jquery.js" type="text/javascript"></script>
+  <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link href="lib/bootstrap/dist/css/bootstrap.css.map" rel="stylesheet">
+  <link href="lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
+  <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="lib/angular/angular.js" type="text/javascript"></script>
+  <script src="lib/ui-router/release/angular-ui-router.js"></script>
+  <link href="lib/ng-table/dist/ng-table.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet" charset="utf-8">
+  <script src="lib/ng-table/dist/ng-table.js"></script>
+  <script src="lib/angular-jwt/dist/angular-jwt.js"></script>
+  <script src="app.js"></script>
+  <script src="controllers/home.js"></script>
+  <script src="controllers/control.js"></script>
+  <script src="controllers/auth.js"></script>
+  <script src="controllers/order.js"></script>
+  <script src="controllers/error.js"></script>
+  <script src="controllers/item.js"></script>
+  <script src="services/user.js"></script>
+  <script src="services/control.js"></script>
+  <script src="services/auth.js"></script>
+  <script src="services/item.js"></script>
+  <script src="services/social.js"></script>
+</head>
+<body ng-app="app">
+  <div class="container">
+  <div class="row">
+  <nav class="navbar navbar-default" ng-controller="control">
+    <div class="container-fluid" style="background-color:black !important;">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigator">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#/">POS Mockup</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navigator">
+        <ul class="nav navbar-nav">
+          <li><a ui-sref="home">Home <span class="sr-only">(current)</span></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Actions <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a ng-hide="user" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-user"></span>  Login/Register</a></li>
+              <li><a ui-sref="cp" ng-show="user"><span class="glyphicon glyphicon-wrench"></span>  Control Panel</a></li>
+              <li><a ui-sref="item" ng-show="user"><span class="glyphicon glyphicon-usd"></span>  POS</a></li>
+              <li><a ui-sref="analytics" ng-show="user"><span class=" glyphicon glyphicon-signal"></span> Analytics</a></li>
+              <li><a ui-sref="mail" ng-show="user"><span class=" glyphicon glyphicon-envelope"></span> Webmail</a></li>
+              <li class="divider" ng-show="user"></li>
+              <li><a ng-click="logout()" ng-show="user"><span class="glyphicon glyphicon-off"></span>  Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  </div>
+  <!-- end nav here -->
+  <div class="jumbotron page-header">
+    <h1> This is a POS/item mockup to be inserted into baesler's website</h1>
+    <small> Yay! </small>
+  </div>
+  <section ui-view></section>
+  </div>
+
+  <div id="myModal" class="modal fade" role="dialog" ng-controller="authcontroller">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Login</h4> 
+      </div>
+      <div class="modal-body">
+      <div ng-if="authMessage" class="bg-danger text-center">
+        {{authMessage}}
+      </div>
+      <form>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" ng-model="userObj.username" class="form-control" id="username"/>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" ng-model="userObj.password" class="form-control" id="password"/>
+      </div>
+      <button class="btn btn-primary" ng-click="login(userObj)">Login</button>
+    </form>
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal" data-toggle="modal" data-target="#rModal">Need an account?</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+  <div id="rModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" ng-controller="authcontroller">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Register</h4>
+      </div>
+      <div class="modal-body">
+      <div ng-if="authMessage" class="bg-danger text-center">
+        {{authMessage}}
+      </div>
+    <form>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input class="form-control" type="text" ng-model="userObj.username" id="username" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" ng-model="userObj.password" id="password" />
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input class="form-control" type="text" ng-model="userObj.address" id="address" />
+      </div>
+      <div class="form-group">
+        <label for="address">Email</label>
+        <input class="form-control" type="email" ng-model="userObj.email" id="address" />
+      </div>
+      <div class="form-group">
+        <label for="phonenumber">Phone Number</label>
+        <input class="form-control" type="tel" ng-model="userObj.phonenumber" id="phonenumber" />
+      </div>
+      <div class="form-group">
+        <label for="birthday">Birthday</label>
+        <input class="form-control" type="date" ng-model="userObj.birthday" id="birthday" />
+      </div>
+      <button class="btn btn-info" data-dismiss="modal" data-toggle="modal" data-target="#myModal">Already have an account?</button>
+      <button class="btn btn-success" ng-click="register(userObj)">Register</button>
+    </form>
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

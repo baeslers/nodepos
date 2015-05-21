@@ -1,0 +1,85 @@
+<div class="row panel text-center">
+	<div class="panel-inner">
+		<button ng-click="makeitem()" class="btn btn-info btn-lg">Create Items</button>
+		<button ng-click="viewitems()" class="btn btn-info btn-lg">View Items</button>
+		<button ng-click="makemod()" class="btn btn-info btn-lg">Create Modifiers</button>
+	</div>
+</div>
+<div class="row">
+<div class="col-md-6" ng-show="itemsview">
+  <table ng-init="initTable()" ng-table class="table">
+	<tr ng-repeat="item in items">
+		<td data-title="'Base Item'">{{item.name}}</td>
+		<td data-title="'Variations'" style="overflow: scroll">{{item.multiples}}</td>
+		<td data-title="'Price'">{{item.variations[0].price_money.amount}}</td>
+		<td data-title="''">{{item.name}}</td>
+	</tr>
+  </table>
+</div>
+<div class="col-md-6" ng-show="itemsview">
+  <table ng-init="initTable()" ng-table class="table">
+	<tr ng-repeat="ing in ingredients">
+		<td data-title="'Name'">{{ing.name}}</td>
+		<td data-title="'Cost for Extra'">{{ing.upMod}}</td>
+		<td data-title="'Cost for Less'">{{ing.downMod}}</td>
+	</tr>
+  </table>
+</div>
+</div>
+<form ng-show="itemcreate">
+	<div class="form-group">
+		<label for="item_name">Item Name</label>
+		<input type="text" ng-model="itemObj.name" class="form-control" id="item_name" required />
+	</div>
+	<div class="input-group">
+		<label for="price">Item Price</label>
+        <span class="input-group-addon">$</span>
+		<input type="text" ng-model="itemObj.variations.price_money.amount" class="input-control" id="price" required />
+	</div>
+	<div class="form-group">
+		<label for="variation">Variation</label>
+		<input type="text" ng-model="itemObj.variations.name" class="form-control" id="variation" required/>
+	</div>
+    <div class="form-group">
+		<label for="department">Departments</label>
+		<div class="form-group" id="department">
+			<label ng-repeat="dept in department" class="checkbox-inline">
+				<input type="checkbox" ng-model="dept" />{{dept}}
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="description">Description</label>
+		<textarea rows="4" class="form-control" ng-model="itemObj.description" id="description"></textarea>
+	</div>
+	<div class="form-group">
+		<label>
+		  <input type="checkbox" id="availability" ng-model="itemObj.visibility" /> Visible Online?
+		</label>
+	</div>
+	<div class="form-group">
+		<label>
+		  <input type="checkbox" id="del" ng-model="itemObj.available_online" /> Available online (delivery)?
+	    </label>
+	</div>
+	<div class="form-group">
+		<label for="pick">
+		  <input type="checkbox" id="pick" ng-model="itemObj.available_for_pickup" /> Available for pickup?
+	    </label>
+	</div>
+	<button class="btn btn-primary btn-lg" ng-click="create(itemObj)">Create</button>
+</form>
+
+
+<form ng-show="ingcreate">
+	<div class="form-group">
+		<label for="item_name">Ingredient Name</label>
+		<input type="text" ng-model="ingObj.name" class="form-control" id="item_name" required />
+	</div>
+	<button class="btn btn-primary btn-lg" ng-click="create(ingObj)">Create</button>
+</form>
+
+<div class="row" ng-repeat="field in message">
+{{field}}
+</div>

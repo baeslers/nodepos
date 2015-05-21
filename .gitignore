@@ -1,0 +1,4 @@
+node_modules/*
+public/lib/*
+config/keys.js
+config/db.js
