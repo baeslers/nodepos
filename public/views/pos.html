@@ -1,0 +1,21 @@
+<div class="row">
+<div class="col-md-6">
+  <table ng-init="initTable()" ng-table class="table table-striped">
+	<tr ng-repeat="item in items">
+		<td data-title="'Name'">{{item.name}}</td>
+		<td data-title="'Price'">{{item.price}}</td>
+		<td data-title="'Tracked'">{{item.track_inventory}}</td>
+		<td data-title="'SKU'">{{item.sku}}</td>
+	</tr>
+  </table>
+</div>
+<div class="col-md-6">
+  <table ng-init="initTable()" ng-table class="table table-striped">
+	<tr ng-repeat="ing in ingredients">
+		<td data-title="'Name'">{{ing.name}}</td>
+		<td data-title="'Cost for Extra'">{{ing.upMod}}</td>
+		<td data-title="'Cost for Less'">{{ing.downMod}}</td>
+	</tr>
+  </table>
+</div>
+</div>

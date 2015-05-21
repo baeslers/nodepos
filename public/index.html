@@ -21,6 +21,7 @@
   <script src="controllers/order.js"></script>
   <script src="controllers/error.js"></script>
   <script src="controllers/item.js"></script>
+  <script src="controllers/pos.js"></script>
   <script src="services/user.js"></script>
   <script src="services/control.js"></script>
   <script src="services/auth.js"></script>
@@ -51,7 +52,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Actions <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
+            <ul class="dropdown-menu text-center" role="menu">
               <li><a ng-hide="user" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-user"></span>  Login/Register</a></li>
               <li><a ui-sref="cp" ng-show="user"><span class="glyphicon glyphicon-wrench"></span>  Control Panel</a></li>
               <li><a ui-sref="item" ng-show="user"><span class="glyphicon glyphicon-usd"></span>  POS</a></li>

@@ -1,30 +1,9 @@
 <div class="row panel text-center">
 	<div class="panel-inner">
 		<button ng-click="makeitem()" class="btn btn-info btn-lg">Create Items</button>
-		<button ng-click="viewitems()" class="btn btn-info btn-lg">View Items</button>
 		<button ng-click="makemod()" class="btn btn-info btn-lg">Create Modifiers</button>
+		<a ui-sref="pos" class="btn btn-info btn-lg">Go to POS</a>
 	</div>
-</div>
-<div class="row">
-<div class="col-md-6" ng-show="itemsview">
-  <table ng-init="initTable()" ng-table class="table">
-	<tr ng-repeat="item in items">
-		<td data-title="'Base Item'">{{item.name}}</td>
-		<td data-title="'Variations'" style="overflow: scroll">{{item.multiples}}</td>
-		<td data-title="'Price'">{{item.variations[0].price_money.amount}}</td>
-		<td data-title="''">{{item.name}}</td>
-	</tr>
-  </table>
-</div>
-<div class="col-md-6" ng-show="itemsview">
-  <table ng-init="initTable()" ng-table class="table">
-	<tr ng-repeat="ing in ingredients">
-		<td data-title="'Name'">{{ing.name}}</td>
-		<td data-title="'Cost for Extra'">{{ing.upMod}}</td>
-		<td data-title="'Cost for Less'">{{ing.downMod}}</td>
-	</tr>
-  </table>
-</div>
 </div>
 <form ng-show="itemcreate">
 	<div class="form-group">

@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngTable', 'ui.router', 'angular-jwt', 'homectrl', 'auth', 'AuthCtrl', 'item', 'controlpanel', 'ngTable', 'errorctrl', 'itemctrl']).
+var app = angular.module('app', ['ngTable', 'ui.router', 'angular-jwt', 'homectrl', 'auth', 'AuthCtrl', 'item', 'controlpanel', 'ngTable', 'errorctrl', 'itemctrl', 'pointofsale']).
 config(function($stateProvider, $urlRouterProvider, $httpProvider){
 
   $httpProvider.interceptors.push('authInterceptor');
@@ -30,6 +30,11 @@ config(function($stateProvider, $urlRouterProvider, $httpProvider){
     url: '/item',
     templateUrl: 'views/item.html',
     controller: 'itemcontroller'
+  }).
+  state('pos', {
+    url: '/pos',
+    templateUrl: 'views/pos.html',
+    controller: 'posctrl'
   });
 });
 
