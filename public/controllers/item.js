@@ -2,7 +2,7 @@ angular.module('itemctrl', ['app']).controller('itemcontroller', [
 '$scope',
 'ItemService',
 function($scope, ItemService){
-
+  $scope.department = ['Deli', 'Bakery', 'Grocery', 'Floral', 'Wine'];
 	function handleRes(res){
 		if (res.data.ingredients){
 			$scope.modifiers = {ingredients: res.data.ingredients, social: res.data.social};

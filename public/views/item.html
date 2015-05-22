@@ -1,6 +1,8 @@
 <script>
 	function spawnField(){
-		$('#varid').append('<input type="text" ng-model="itemObj.variations.name" class="form-control" id="variation" required/>');
+		var newVariation = document.getElementById('varinner');
+		console.log(newVariation);
+		$('#varid').append(newVariation);
 	}
 </script>
 <div class="row panel text-center">
@@ -14,15 +16,6 @@
 	<div class="form-group">
 		<label for="item_name">Item Name</label>
 		<input type="text" ng-model="itemObj.name" class="form-control" id="item_name" required />
-	</div>
-	<div class="input-group">
-		<label for="price">Item Price</label>
-        <span class="input-group-addon">$</span>
-		<input type="text" ng-model="itemObj.variations.price_money.amount" class="input-control" id="price" required />
-	</div>
-	<div class="form-group" id="varid">
-		<label for="variation">Variation <button onClick="spawnField()" class="btn btn-info btn-sm">Add</button></label>
-		<input type="text" ng-model="itemObj.variations.name" class="form-control" id="variation" required/>
 	</div>
     <div class="form-group">
 		<label for="department">Departments</label>
@@ -41,16 +34,27 @@
 		<label>
 		  <input type="checkbox" id="availability" ng-model="itemObj.visibility" /> Visible Online?
 		</label>
-	</div>
-	<div class="form-group">
 		<label>
 		  <input type="checkbox" id="del" ng-model="itemObj.available_online" /> Available online (delivery)?
 	    </label>
-	</div>
-	<div class="form-group">
 		<label for="pick">
 		  <input type="checkbox" id="pick" ng-model="itemObj.available_for_pickup" /> Available for pickup?
 	    </label>
+	</div>
+	<hr/>
+	<div id="varidd">
+	  <div id="varinner">
+	  <div class="input-group">
+		<label for="price">Variation Price</label>
+        <span class="input-group-addon">$</span>
+		<input type="text" ng-model="itemObj.variations.price_money.amount" class="input-control" id="price" required />
+	  </div>
+	  <div class="form-group" id="varid">
+		<label for="variation">Variation Name</label>
+		<input type="text" ng-model="itemObj.variations.name" class="form-control" id="variation" required/>
+	  </div>
+	  </div>
+	<button onClick="spawnField()" class="btn btn-info btn-sm">Add</button>
 	</div>
 	<button class="btn btn-primary btn-lg" ng-click="create(itemObj)">Create</button>
 </form>

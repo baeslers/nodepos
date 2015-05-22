@@ -18,7 +18,7 @@ function data_handler(err, resp, res){
 function convert_to_cents(obj, callback){
 	var self = obj;
 	self.variations.price_money.amount = (obj.variations.price_money.amount*100);
-	callback(self);
+  callback(self);
 }
 
 module.exports = function(app){
