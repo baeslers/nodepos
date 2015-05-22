@@ -1,8 +1,8 @@
-<!-- DOCTYPE html5 charset="utf-8" -->
+<!-- DOCTYPE html5 -->
 <html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Baeslers </title>
+  <meta charset="utf-8">
+  <meta content="width=device-width" name="viewport">  <title> Baeslers </title>
   <script src="lib/jquery/dist/jquery.js" type="text/javascript"></script>
   <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
   <link href="lib/bootstrap/dist/css/bootstrap.css.map" rel="stylesheet">
@@ -22,11 +22,13 @@
   <script src="controllers/error.js"></script>
   <script src="controllers/item.js"></script>
   <script src="controllers/pos.js"></script>
+  <script src="controllers/cardctrl.js"></script>
   <script src="services/user.js"></script>
   <script src="services/control.js"></script>
   <script src="services/auth.js"></script>
   <script src="services/item.js"></script>
   <script src="services/social.js"></script>
+  <script src="services/sqrsrv.js"></script>
 </head>
 <body ng-app="app">
   <div class="container">
@@ -58,6 +60,7 @@
               <li><a ui-sref="item" ng-show="user"><span class="glyphicon glyphicon-usd"></span>  POS</a></li>
               <li><a ui-sref="analytics" ng-show="user"><span class=" glyphicon glyphicon-signal"></span> Analytics</a></li>
               <li><a ui-sref="mail" ng-show="user"><span class=" glyphicon glyphicon-envelope"></span> Webmail</a></li>
+              <li><a data-toggle="modal" data-target="#cardModal"><span class="glyphicon glyphicon-shopping-cart"></span>  Checkout</a></li>
               <li class="divider" ng-show="user"></li>
               <li><a ng-click="logout()" ng-show="user"><span class="glyphicon glyphicon-off"></span>  Logout</a></li>
             </ul>
@@ -153,6 +156,43 @@
   
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>  
+<div id="cardModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" ng-controller="cardctrl">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Payment Gateway</h4>
+      </div>
+      <div class="modal-body">
+      <div ng-if="authMessage" class="bg-danger text-center">
+        {{authMessage}}
+      </div>
+    <form>
+      <div class="form-group">
+        <label for="cn">Card Number</label>
+        <input class="form-control" type="number" ng-model="card.number" placeholder="Card Number" id="cn" required />
+      </div>
+      <div class="form-group">
+        <label for="cvv">CVV</label>
+        <input type="number" class="form-control" ng-model="card.cvv" placeholder="CVV" id="cvv" required />
+      </div>
+      <div class="form-group">
+        <label for="exp">Card Expiration</label>
+        <input type="month" class="form-control" ng-model="card.exp.month" id="exp" required />
+        <input type="year" ng-model="card.exp.year" class="form-control" required />
+      </div>
+    </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Pay</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
