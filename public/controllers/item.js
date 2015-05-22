@@ -38,11 +38,6 @@ function($scope, ItemService){
      $scope.itemsview = false;
      $scope.itemcreate = true;
    }
-   $scope.viewitems = function(){
-   	 $scope.ingcreate = false;
-     $scope.itemcreate = false;
-     $scope.itemsview = true;
-   }
    $scope.addmod = function(list, opt){
    	 var obj = {list: list, opt: opt};
      ItemService.makemod(obj)

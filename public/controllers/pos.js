@@ -5,14 +5,6 @@ function($scope, ItemService){
 
   $scope.department = ['Deli', 'Bakery', 'Grocery', 'Floral', 'Wine'];
 
-  function format(item){
-  	var itemObj = {};
-  	for (x in item.variations){
-
-  	}
-  	return itemObj;
-  }
-
   function buildObject(tv, itemObj, callback){
   	for (x in tv){
   	  itemObj[x] = tv[x];
