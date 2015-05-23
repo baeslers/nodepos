@@ -7,6 +7,7 @@ function($scope, ItemService){
 		if (res.data.ingredients){
 			$scope.modifiers = {ingredients: res.data.ingredients, social: res.data.social};
 		} else {
+      console.log(res);
 			$scope.message = {error: 'no data recieved'};
 		}
 	}

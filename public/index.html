@@ -22,7 +22,7 @@
   <script src="controllers/error.js"></script>
   <script src="controllers/item.js"></script>
   <script src="controllers/pos.js"></script>
-  <script src="controllers/cardctrl.js"></script>
+  <script src="controllers/cartctrl.js"></script>
   <script src="services/user.js"></script>
   <script src="services/control.js"></script>
   <script src="services/auth.js"></script>
@@ -31,23 +31,6 @@
   <script src="services/sqrsrv.js"></script>
 </head>
 <body ng-app="app">
-    <style type="text/css">
-        .demo-container {
-            width: 100% !important;
-            max-width: 350px !important;
-            margin: 50px auto !important;
-        }
-
-        form {
-            margin: 30px !important;
-        }
-        input {
-            width: 200px !important;
-            margin: 10px auto !important;
-            display: block !important;
-        }
-
-    </style>
   <div class="container">
   <div class="row">
   <nav class="navbar navbar-default" ng-controller="control">
@@ -183,7 +166,7 @@
   <div class="modal-dialog">
 
     <!-- Modal content-->
-    <div class="modal-content" ng-controller="cardctrl">
+    <div class="modal-content" ng-controller="cartctrl">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Payment Gateway</h4>

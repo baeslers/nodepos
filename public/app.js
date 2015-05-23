@@ -1,7 +1,8 @@
-var app = angular.module('app', ['ngTable', 'ui.router', 'angular-jwt', 'homectrl', 'auth', 'AuthCtrl', 'item', 'controlpanel', 'ngTable', 'errorctrl', 'itemctrl', 'pointofsale', 'cardctrl', 'SquareService']).
+var app = angular.module('app', ['ngTable', 'ui.router', 'angular-jwt', 'homectrl', 'auth', 'AuthCtrl', 'item', 'controlpanel', 'ngTable', 'errorctrl', 'itemctrl', 'pointofsale', 'cartctrl', 'SquareService']).
 config(function($stateProvider, $urlRouterProvider, $httpProvider){
 
   $httpProvider.interceptors.push('authInterceptor');
+  $httpProvider.interceptors.push('progressHandler');
 
   $urlRouterProvider.otherwise('/');
 
@@ -37,7 +38,14 @@ config(function($stateProvider, $urlRouterProvider, $httpProvider){
     controller: 'posctrl'
   });
 });
-
+app.factory('progressHandler', function($rootScope, $q, $window){
+  return {
+    response: function(response){
+      var a = $q.defer(response);
+      return response || $q.when(response);
+    }
+  }
+});
 app.factory('authInterceptor', function ($rootScope, $q, $window) {
   return {
     request: function (config) {
