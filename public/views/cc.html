@@ -1,0 +1,55 @@
+
+<script>
+  function spawn(){
+    $("#ccModal").modal();
+  }
+</script>
+ <div class="cart">
+      <table ng-table class="table table-striped">
+        <tr ng-repeat="item in cart" class="text-center">
+          <td data-title="'Name'">{{item.name}}</td>
+          <td data-title="'Price'">${{item.price}} <button class="close" ng-click="remove(item)">&times;</button></td>
+        </tr>
+      </table>
+      </div>
+<div id="ccModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Payment Gateway</h4>
+      </div>
+      <div class="modal-body" id="cardForm">
+      <div ng-if="authMessage" class="bg-danger text-center">
+        {{authMessage}}
+      </div>
+        <div class="demo-container">
+        <div class="card-wrapper"></div>
+
+        <div class="form-container active">
+            <form action="" id="cardform">
+                <input placeholder="Card number" type="text" name="number">
+                <input placeholder="Full name" type="text" name="name" autofill >
+                <input placeholder="MM/YY" type="text" name="expiry">
+                <input placeholder="CVC" type="text" name="cvc">
+            </form>
+        </div>
+    </div>
+      </div>
+      <div id="foo" class="modal-footer">
+      <button class="btn btn-info" ng-hide="cartview">View Cart</button> 
+      <button class="btn btn-success" ng-click="checkout();">Pay ${{total}}</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+ <script src="js/card.js"></script>
+ <script>
+        new Card({
+            form: document.querySelector('#cardForm'),
+            container: '.card-wrapper'
+        });
+    </script>

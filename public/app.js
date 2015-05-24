@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngTable', 'ui.router', 'angular-loading-bar', 'angular-jwt', 'homectrl', 'auth', 'AuthCtrl', 'item', 'controlpanel', 'ngTable', 'errorctrl', 'itemctrl', 'pointofsale', 'cartctrl', 'SquareService', 'uploadctrl', 'upload']).
+var app = angular.module('app', ['ngTable', 'ui.router', 'angular-loading-bar', 'angular-jwt', 'homectrl', 'auth', 'AuthCtrl', 'item', 'controlpanel', 'ngTable', 'errorctrl', 'itemctrl', 'pointofsale', 'cartctrl', 'SquareService', 'uploadctrl', 'upload', 'jsTree.directive']).
 config(function($stateProvider, $urlRouterProvider, $httpProvider){
 
   $httpProvider.interceptors.push('authInterceptor');
@@ -36,7 +36,12 @@ config(function($stateProvider, $urlRouterProvider, $httpProvider){
     url: '/pos',
     templateUrl: 'views/pos.html',
     controller: 'posctrl'
-  });
+  }).
+  state('cc', {
+    url: '/',
+    templateUrl: '/views/cc.html',
+    controller: 'cartctrl'
+  });  
 });
 app.factory('progressHandler', function($rootScope, $q, $window){
   return {
