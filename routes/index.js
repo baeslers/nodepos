@@ -19,7 +19,7 @@ module.exports = function(app){
 
   });
 
-  mainRouter.post('/upload', function(req, res){
+  mainRouter.get('/upload', function(req, res){
     console.log(req.body);
     console.log(req.files);
   });

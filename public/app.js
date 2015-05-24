@@ -43,6 +43,16 @@ config(function($stateProvider, $urlRouterProvider, $httpProvider){
     controller: 'cartctrl'
   });  
 });
+
+app.factory('progressHandler', function($rootScope, $q, $window){
+  return {
+    response: function(response){
+      var a = $q.defer(response);
+      return response || $q.when(response);
+    }
+  }
+});
+
 app.factory('authInterceptor', function ($rootScope, $q, $window, jwtHelper) {
   return {
     request: function (config) {

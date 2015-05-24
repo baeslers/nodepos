@@ -1,0 +1,49 @@
+/*michaels stuff*/
+nav{
+  background-color:black !important;
+}
+.navbar{
+  background-color: black !important;
+}
+.panel{
+  border-radius: 14px 14px 14px 14px;
+  -moz-border-radius: 14px 14px 14px 14px;
+  -webkit-border-radius: 14px 14px 14px 14px;
+  border: 1px ridge #00NaNNaN;
+  /*background-image:"U+2022";
+  background-repeat: repeat;*/
+}
+.panel-inner{
+
+}
+.navbar-brand{
+  color: white !important;
+}
+.navbar-default .navbar-nav > li > a{
+  color: white !important;
+}
+.dropdown-menu {
+  background-color: black !important;
+}
+.dropdown-menu > li > a {
+  color: white !important;
+}
+.page-header{
+  color: white;
+  /*background-image:url("img/esp.jpg");*/
+  background-color:black !important;
+  background-repeat:no-repeat;
+}
+
+.error{
+  border-radius: 44px 44px 44px 44px;
+  -moz-border-radius: 44px 44px 44px 44px;
+  -webkit-border-radius: 44px 44px 44px 44px;
+  border: 0px solid #000000;  background-color:rgb(100, 25, 25) !important;
+  background-color: #e67e7e;
+  color: black;
+  height: 20%;
+  width: 50%;
+  font-size: 2.5em;
+}
+/* end michaels stuff*/
