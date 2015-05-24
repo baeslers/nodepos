@@ -4,14 +4,14 @@
     $("#ccModal").modal();
   }
 </script>
- <div class="cart">
-      <table ng-table class="table table-striped">
-        <tr ng-repeat="item in cart" class="text-center">
-          <td data-title="'Name'">{{item.name}}</td>
-          <td data-title="'Price'">${{item.price}} <button class="close" ng-click="remove(item)">&times;</button></td>
-        </tr>
-      </table>
-      </div>
+<div class="cart">
+  <table ng-table class="table table-striped">
+    <tr ng-repeat="item in cart" class="text-center">
+      <td data-title="'Name'">{{item.name}}</td>
+      <td data-title="'Price'">${{item.price}} <button class="close" ng-click="remove(item)">&times;</button></td>
+    </tr>
+  </table>
+</div>
 <div id="ccModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 

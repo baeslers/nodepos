@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngTable', 'ui.router', 'angular-loading-bar', 'angular-jwt', 'homectrl', 'auth', 'AuthCtrl', 'item', 'controlpanel', 'ngTable', 'errorctrl', 'itemctrl', 'pointofsale', 'cartctrl', 'SquareService', 'uploadctrl', 'upload', 'jsTree.directive']).
+var app = angular.module('app', ['ngTable', 'ui.router', 'angular-loading-bar', 'angular-jwt', 'homectrl', 'auth', 'AuthCtrl', 'item', 'controlpanel', 'errorctrl', 'itemctrl', 'pointofsale', 'cartctrl', 'SquareService', 'uploadctrl', 'upload', 'jsTree.directive', 'flow']).
 config(function($stateProvider, $urlRouterProvider, $httpProvider){
 
   $httpProvider.interceptors.push('authInterceptor');
@@ -13,7 +13,7 @@ config(function($stateProvider, $urlRouterProvider, $httpProvider){
   	controller: 'home'
   }).
   state('auth', {
-  	url: '/',
+  	url: '/auth',
   	templateUrl: 'views/auth.html',
   	controller: 'authcontroller'
   }).
@@ -43,21 +43,13 @@ config(function($stateProvider, $urlRouterProvider, $httpProvider){
     controller: 'cartctrl'
   });  
 });
-app.factory('progressHandler', function($rootScope, $q, $window){
-  return {
-    response: function(response){
-      var a = $q.defer(response);
-      return response || $q.when(response);
-    }
-  }
-});
-app.factory('authInterceptor', function ($rootScope, $q, $window) {
+app.factory('authInterceptor', function ($rootScope, $q, $window, jwtHelper) {
   return {
     request: function (config) {
       config.headers = config.headers || {};
       if ($window.sessionStorage.token) {
         config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
-      }
+        $window.user = jwtHelper.decodeToken($window.sessionStorage.token);      }
       return config;
     },
     response: function (response) {

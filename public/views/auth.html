@@ -1,42 +1,90 @@
-<div class="row">
-	<div class="hero" ng-if="register_start">
-		<form>
-			<div class="form-group">
-				<label for="username">Username</label>
-				<input class="form-control" type="text" ng-model="userObj.username" id="username" />
-			</div>
-			<div class="form-group">
-				<label for="password">Password</label>
-				<input class="form-control" type="password" ng-model="userObj.password" id="password" />
-			</div>
-			<div class="form-group">
-				<label for="address">Address</label>
-				<input class="form-control" type="text" ng-model="userObj.address" id="address" />
-			</div>
-			<div class="form-group">
-				<label for="phonenumber">Phone Number</label>
-				<input class="form-control" type="tel" ng-model="userObj.phonenumber" id="phonenumber" />
-			</div>
-			<div class="form-group">
-				<label for="birthday">Birthday</label>
-				<input class="form-control" type="date" ng-model="userObj.birthday" id="birthday" />
-			</div>
-			<button class="btn btn-success" ng-click="register(userObj)">Register</button>
-			<button class="btn btn-primary" ng-click="logButton()">Already have an account? Login! </button>
-		</form>
-	</div>
-	<div class="hero" ng-if="login_start">
-		<form>
-			<div class="form-group">
-				<label for="username">Username</label>
-				<input type="text" ng-model="userObj.username" class="form-control" id="username"/>
-			</div>
-			<div class="form-group">
-				<label for="password">Password</label>
-				<input type="password" ng-model="userObj.password" class="form-control" id="password"/>
-			</div>
-			<button class="btn btn-success" ng-click="regButton()">Don't have an account?</button>
-			<button class="btn btn-primary" ng-click="login(userObj)">Login</button>
-		</form>
-	</div>
+
+<script>
+    $("#myModal").modal();
+    function change(){
+    	
+    }
+</script>
+  <div id="myModal" class="modal fade" role="dialog" >
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="change()">&times;</button>
+        <h4 class="modal-title">Login</h4> 
+      </div>
+      <div class="modal-body">
+      <div ng-if="authMessage" class="bg-danger text-center">
+        {{authMessage}}
+      </div>
+      <form>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" ng-model="userObj.username" class="form-control" id="username"/>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" ng-model="userObj.password" class="form-control" id="password"/>
+      </div>
+    </form>
+  
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="login(userObj)">Login</button>
+        <button type="button" class="btn btn-info" data-dismiss="modal" ng-click="change()" data-toggle="modal" data-target="#rModal">Need an account?</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="change()">Close</button>
+      </div>
+    </div>
+
+  </div>
 </div>
+  <div id="rModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="change()">&times;</button>
+        <h4 class="modal-title">Register</h4>
+      </div>
+      <div class="modal-body">
+      <div ng-if="authMessage" class="bg-danger text-center">
+        {{authMessage}}
+      </div>
+    <form>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input class="form-control" type="text" ng-model="userObj.username" id="username" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" ng-model="userObj.password" id="password" />
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input class="form-control" type="text" ng-model="userObj.address" id="address" />
+      </div>
+      <div class="form-group">
+        <label for="address">Email</label>
+        <input class="form-control" type="email" ng-model="userObj.email" id="address" />
+      </div>
+      <div class="form-group">
+        <label for="phonenumber">Phone Number</label>
+        <input class="form-control" type="tel" ng-model="userObj.phonenumber" id="phonenumber" />
+      </div>
+      <div class="form-group">
+        <label for="birthday">Birthday</label>
+        <input class="form-control" type="date" ng-model="userObj.birthday" id="birthday" />
+      </div>
+      <button class="btn btn-info" data-dismiss="modal" ng-click="change()" data-toggle="modal" data-target="#myModal">Already have an account?</button>
+      <button class="btn btn-success" ng-click="register(userObj)">Register</button>
+    </form>
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="change()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>  
