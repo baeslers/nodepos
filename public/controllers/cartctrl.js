@@ -1,7 +1,8 @@
 angular.module('cartctrl', ['app']).controller('cartctrl', [
 '$scope',
 'SquareService',
-function($scope, SquareService){
+'$http',
+function($scope, SquareService, $http){
   	$scope.cart = [{
     	name: 'Hoss',
     	price: 7.99
@@ -22,6 +23,9 @@ function($scope, SquareService){
   	console.log($scope.total);
   }
   total();
+  $scope.checkout = function(){
+  	$http.get('/blah').then(function(a,b,c,d){console.log(a);console.log(b);console.log(c);console.log(d);});
+  }
   $scope.remove = function(item){
   	$scope.cart.splice($scope.cart.indexOf(item), $scope.cart.indexOf(item)+1);
   	console.log($scope.cart);

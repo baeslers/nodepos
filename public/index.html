@@ -7,8 +7,10 @@
   <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
   <link href="lib/bootstrap/dist/css/bootstrap.css.map" rel="stylesheet">
   <link href="lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
+  <link href="lib/angular-loading-bar/build/loading-bar.css" rel="stylesheet" media="all">
   <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
   <script src="lib/angular/angular.js" type="text/javascript"></script>
+  <script src="lib/angular-loading-bar/build/loading-bar.js"></script>
   <script src="lib/ui-router/release/angular-ui-router.js"></script>
   <link href="lib/ng-table/dist/ng-table.css" rel="stylesheet">
   <link href="style.css" rel="stylesheet" charset="utf-8">
@@ -38,10 +40,10 @@
             margin: 50px auto !important;
         }
 
-        form {
+        #cardform {
             margin: 30px !important;
         }
-        input {
+        #cardform > input {
             width: 200px !important;
             margin: 10px auto !important;
             display: block !important;
@@ -215,7 +217,7 @@
       </div>
       <div id="footdatbitch" class="modal-footer">
       <button class="btn btn-info" ng-hide="cartview">View Cart</button> 
-      <button class="btn btn-success">Pay ${{total}}</button>
+      <button class="btn btn-success" ng-click="checkout();">Pay ${{total}}</button>
       </div>
     </div>
 

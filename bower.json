@@ -20,6 +20,7 @@
     "bootstrap": "~3.3.4",
     "ui-router": "~0.2.14",
     "angular-jwt": "~0.0.8",
-    "ng-table": "~0.5.4"
+    "ng-table": "~0.5.4",
+    "angular-loading-bar": "~0.7.1"
   }
 }

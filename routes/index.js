@@ -15,6 +15,9 @@ module.exports = function(app){
   mainRouter.get('/', function(req, res){
     res.sendfile('public/core/index.html');
   });
+  mainRouter.get('/blah', function(req, res){
+
+  });
   /*bootstrap to app*/
 
   app.use('/', mainRouter);
