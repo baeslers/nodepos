@@ -16,6 +16,10 @@ nav{
 .panel-inner{
 
 }
+.table_img{
+  height: 50px !important;
+  width: 50px !important;
+}
 .navbar-brand{
   color: white !important;
 }
