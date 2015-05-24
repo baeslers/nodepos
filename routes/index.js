@@ -18,6 +18,13 @@ module.exports = function(app){
   mainRouter.get('/blah', function(req, res){
 
   });
+
+  mainRouter.post('/upload', function(req, res){
+    console.log(req.body);
+    console.log(req.files);
+  });
+
+
   /*bootstrap to app*/
 
   app.use('/', mainRouter);

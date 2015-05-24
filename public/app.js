@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngTable', 'ui.router', 'angular-loading-bar', 'angular-jwt', 'homectrl', 'auth', 'AuthCtrl', 'item', 'controlpanel', 'ngTable', 'errorctrl', 'itemctrl', 'pointofsale', 'cartctrl', 'SquareService']).
+var app = angular.module('app', ['ngTable', 'ui.router', 'angular-loading-bar', 'angular-jwt', 'homectrl', 'auth', 'AuthCtrl', 'item', 'controlpanel', 'ngTable', 'errorctrl', 'itemctrl', 'pointofsale', 'cartctrl', 'SquareService', 'uploadctrl', 'upload']).
 config(function($stateProvider, $urlRouterProvider, $httpProvider){
 
   $httpProvider.interceptors.push('authInterceptor');

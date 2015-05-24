@@ -12,6 +12,7 @@
   <script src="lib/angular/angular.js" type="text/javascript"></script>
   <script src="lib/angular-loading-bar/build/loading-bar.js"></script>
   <script src="lib/ui-router/release/angular-ui-router.js"></script>
+  <script src="lib/flow.js/dist/flow.js"></script>
   <link href="lib/ng-table/dist/ng-table.css" rel="stylesheet">
   <link href="style.css" rel="stylesheet" charset="utf-8">
   <script src="lib/ng-table/dist/ng-table.js"></script>
@@ -25,6 +26,8 @@
   <script src="controllers/item.js"></script>
   <script src="controllers/pos.js"></script>
   <script src="controllers/cartctrl.js"></script>
+  <script src="controllers/upload.js"></script>
+  <script src="services/upload.js"></script>
   <script src="services/user.js"></script>
   <script src="services/control.js"></script>
   <script src="services/auth.js"></script>
@@ -94,6 +97,20 @@
     <h1> This is a POS/item mockup to be inserted into baesler's website</h1>
     <small> Yay! </small>
   </div>
+  <form ng-controller="UploadCtrl" encoding="form/multipart">
+    <div class="form-group">
+      <label for="picture">Picture File Upload</label>
+      <input type="file" id="picture" class="form-control" ng-model="picture" required />
+      <button class="btn btn-primary btn-sm" ng-click="upload(picture);">Upload</button>
+    </div>
+
+  <!-- flow stuff -->
+  <script>
+
+  </script>
+  <!-- end flow -->
+
+  </form>
   <section ui-view></section>
   </div>
 

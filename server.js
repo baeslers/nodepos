@@ -24,7 +24,6 @@ require('./config/init')(app, morgan, bodyParser, session, cookieParser, passpor
 require('./routes/index')(app, passport);
 require('./routes/auth')(app, passport);
 require('./routes/square')(app);
-require('./routes/api')(app);
 //require('./routes/admin')(app);
 /*end bootstraps*/
 
