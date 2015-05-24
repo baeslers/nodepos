@@ -8,7 +8,10 @@ module.exports = function(app, morgan, bodyParser, session, cookieParser, passpo
   app.use(bodyParser.urlencoded({extended: true})); //x-www-url-encoded
   app.use(bodyParser.json()); //read req.body as json
   app.use(session({secret: 'sessionSecretIsSHHH', saveUninitialized: false, resave: false, store: sessionstore}));
-  app.use(multer({dest: './uploads/'}));
+  app.use(multer({dest: './uploads/', onFileUploadComplete: function(file, req, res){
+    console.log(file);
+    return res.json({message: 'file upload complete'});
+  }}));
   app.use(passport.initialize());
   app.use(passport.session());
 };
