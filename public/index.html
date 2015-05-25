@@ -85,7 +85,6 @@
   
   <form>
   <div flow-init="{target: '/upload'}"
-     flow-files-submitted="$flow.upload()"
      flow-file-success="$file.msg = $message"
      flow-files-submitted="$flow.upload()">
   
@@ -93,25 +92,20 @@
     <label for="picture">Picture Upload</label>
     <input type="file" class="form-control" flow-btn/>
   </div>
-  <div class="form-group">
-    <label for="dir">Directory Upload</label>
-    <input type="file" class="form-control" flow-dir/>
-  </div>
     <span class="btn btn-success" ng-click="$flow.upload()">Upload File</span>
 
-  <table class="table table-striped">
-    <tr ng-repeat="file in $flow.files">
+    <table class="table table-striped">
+      <tr ng-repeat="file in $flow.files">
         <td>{{$index+1}}</td>
         <td>{{file.name}}</td>
         <td>{{file.msg}}</td>
         <td><img class="thumbnail img-responsive table_img" flow-img="file" /></td>
-    </tr>
-  </table>
-</div>
-</form>
+      </tr>
+    </table>
+  </div>
+  </form>
   <!-- end flow -->
 
-  </form>
   <section ui-view></section>
   </div>
 </body>
